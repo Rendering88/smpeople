@@ -123,6 +123,7 @@
             }
             async updatebadge(color) {
                 if (this.badgecolor !== color) {
+                    this.badgecolor = color;
                     this.badgeSrc = await mergeImages("images/f_black.png", "images/m4.png", color);
                     this.badgeImg = await this.loadImage(this.badgeSrc);
                 }
