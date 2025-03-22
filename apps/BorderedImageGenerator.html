@@ -186,9 +186,8 @@
             document.addEventListener('paste', async (event) => {
                 const activeElement = document.activeElement;
                 const isEditable = (
-                    activeElement.tagName === 'INPUT' ||
-                    activeElement.tagName === 'TEXTAREA' ||
-                    activeElement.isContentEditable
+                    activeElement.tagName === 'INPUT' &&
+                    activeElement.type === 'text'
                 );
 
                 if (isEditable) return;
@@ -211,9 +210,8 @@
             document.addEventListener('copy', async (event) => {
                 const activeElement = document.activeElement;
                 const isEditable = (
-                    activeElement.tagName === 'INPUT' ||
-                    activeElement.tagName === 'TEXTAREA' ||
-                    activeElement.isContentEditable
+                    activeElement.tagName === 'INPUT' &&
+                    activeElement.type === 'text'
                 );
                 if (isEditable) return;
 
@@ -229,7 +227,7 @@
                         document.body.classList.remove('copy-feedback');
                     }, 300);
                 } catch (error) {
-                    
+
                     console.error('An error occurred while copying the image:', error);
                 }
             });
